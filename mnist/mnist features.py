@@ -1,8 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
+
 def project_onto_PC(X, pcs, n_components, feature_means):
     X_hash = X - feature_means
     return np.dot(X_hash, pcs[:, :n_components])
+    raise NotImplementedError
+
+
 def center_data(X):
     feature_means = X.mean(axis=0)
     return (X - feature_means), feature_means
@@ -15,6 +19,7 @@ def principal_components(centered_data):
     eigen_values = eigen_values[idx]
     eigen_vectors = eigen_vectors[:, idx]
     return eigen_vectors
+###Correction note:  Differing from the release, this function takes an extra input feature_means.
 
 def plot_PC(X, pcs, labels, feature_means):
     """
